@@ -40,12 +40,13 @@
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(12, 358);
+            this.createButton.Location = new System.Drawing.Point(281, 95);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(254, 80);
+            this.createButton.Size = new System.Drawing.Size(326, 130);
             this.createButton.TabIndex = 0;
             this.createButton.Text = "생성";
             this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // monthCalendar
             // 
@@ -110,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 450);
+            this.ClientSize = new System.Drawing.Size(616, 243);
             this.Controls.Add(this.endDateChange_Button);
             this.Controls.Add(this.startDateChange_Button);
             this.Controls.Add(this.label2);
@@ -120,7 +121,7 @@
             this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.createButton);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ITS 부문 일일점검 결과 보고서 생성기";
             this.ResumeLayout(false);
             this.PerformLayout();
 

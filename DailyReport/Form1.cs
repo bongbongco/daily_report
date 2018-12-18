@@ -41,5 +41,22 @@ namespace DailyReport
         {
             endDate_TextBox.Text = monthCalendar.SelectionEnd.ToShortDateString();
         }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            DateTime start_date = DateTime.Parse(startDate_TextBox.Text);
+            DateTime target_date = start_date.AddDays(-1);
+            DateTime end_date = DateTime.Parse(endDate_TextBox.Text);
+            
+            while((end_date - target_date).TotalDays > 0)
+            {
+                target_date = target_date.AddDays(1);
+                if ((int)target_date.DayOfWeek == 6 || (int)target_date.DayOfWeek == 0)
+                {
+                    continue;
+                }
+                Console.WriteLine((int)target_date.DayOfWeek);
+            }
+        }
     }
 }
