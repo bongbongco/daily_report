@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace DailyReport
 {
@@ -47,6 +49,8 @@ namespace DailyReport
             DateTime start_date = DateTime.Parse(startDate_TextBox.Text);
             DateTime target_date = start_date.AddDays(-1);
             DateTime end_date = DateTime.Parse(endDate_TextBox.Text);
+
+            object oMissing = System.Reflection.Missing.Value;
             
             while((end_date - target_date).TotalDays > 0)
             {
@@ -56,7 +60,17 @@ namespace DailyReport
                     continue;
                 }
                 Console.WriteLine((int)target_date.DayOfWeek);
+
+
+
+                Word.Application daily_report;
+                Word.Document daily_reportDoc;
+
+                daily_report = new Word.Application();
+                daily_report.Visible = true;
+                daily_reportDoc = daily_report.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);
             }
         }
+
     }
 }
