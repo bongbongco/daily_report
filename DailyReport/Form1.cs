@@ -57,7 +57,12 @@ namespace DailyReport
             object oSavePath = "c:\\bin\\daily_report\\";
             object oFullPath = "";
             object oReportDate_BookMark = "ReportDate";
-            
+
+            DirectoryInfo saveDirectory = new DirectoryInfo(oSavePath.ToString());
+            if (!saveDirectory.Exists)
+            {
+                saveDirectory.Create();
+            }
 
             object oMissing = System.Reflection.Missing.Value;
             

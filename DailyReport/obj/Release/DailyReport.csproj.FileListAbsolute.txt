@@ -1,0 +1,10 @@
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\bin\Release\DailyReport.exe.config
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\bin\Release\DailyReport.exe
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\bin\Release\DailyReport.pdb
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\obj\Release\DailyReport.csprojAssemblyReference.cache
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\obj\Release\DailyReport.Form1.resources
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\obj\Release\DailyReport.Properties.Resources.resources
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\obj\Release\DailyReport.csproj.GenerateResource.cache
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\obj\Release\DailyReport.csproj.CoreCompileInputs.cache
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\obj\Release\DailyReport.exe
+C:\Users\DAOU\source\repos\DailyReport\DailyReport\obj\Release\DailyReport.pdb
