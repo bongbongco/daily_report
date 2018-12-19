@@ -1,14 +1,15 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Reflection;
-using Word = Microsoft.Office.Interop.Word;
+using Microsoft.Office.Interop.Word;
 
 namespace DailyReport
 {
@@ -50,6 +51,14 @@ namespace DailyReport
             DateTime target_date = start_date.AddDays(-1);
             DateTime end_date = DateTime.Parse(endDate_TextBox.Text);
 
+            Microsoft.Office.Interop.Word.Application oDaily_report = new Microsoft.Office.Interop.Word.Application();
+            Document oDaily_reportDoc = new Document();
+            object oTemplate = "c:\\bin\\template\\daily_report_template.dot";
+            object oSavePath = "c:\\bin\\daily_report\\";
+            object oFullPath = "";
+            object oReportDate_BookMark = "ReportDate";
+            
+
             object oMissing = System.Reflection.Missing.Value;
             
             while((end_date - target_date).TotalDays > 0)
@@ -59,16 +68,29 @@ namespace DailyReport
                 {
                     continue;
                 }
-                Console.WriteLine((int)target_date.DayOfWeek);
+
+                oDaily_report = new Microsoft.Office.Interop.Word.Application();
+                oDaily_report.Visible = false;
+                oDaily_reportDoc = oDaily_report.Documents.Add(ref oTemplate, ref oMissing, ref oMissing, ref oMissing);
+
+                if (oDaily_reportDoc.Bookmarks.Exists("ReportDate"))
+                {
+                    oFullPath = oSavePath + "[시행세칙]일일점검양식_ver_2_" + target_date.ToString("yyyy-MM-dd") + ".docx";
+                    oDaily_reportDoc.Bookmarks.get_Item(ref oReportDate_BookMark).Range.Text = target_date.ToString("yyyy년 MM월 dd일");
+                    oDaily_reportDoc.SaveAs2(oFullPath, ref oMissing);
+                    oDaily_report.Application.Quit(ref oMissing, ref oMissing, ref oMissing);
 
 
+                    Thread.Sleep(1000);
+                    File.SetCreationTime(oFullPath.ToString(), target_date);
+                    File.SetLastWriteTime(oFullPath.ToString(), target_date);
+                    File.SetLastAccessTime(oFullPath.ToString(), target_date);
+                }
 
-                Word.Application daily_report;
-                Word.Document daily_reportDoc;
-
-                daily_report = new Word.Application();
-                daily_report.Visible = true;
-                daily_reportDoc = daily_report.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+                else
+                {
+                    oDaily_report.Application.Quit(ref oMissing, ref oMissing, ref oMissing);
+                }
             }
         }
 
